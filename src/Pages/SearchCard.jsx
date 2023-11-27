@@ -10,8 +10,8 @@ import {
   CardHeader,
 } from "@nextui-org/react";
 
-const CardItem = ({ product }) => {
-  const dispatch = useDispatch();
+const SearchCard = ({item}) => {
+    const dispatch=useDispatch()
   return (
     <>
       <div className=" mt-10">
@@ -21,21 +21,21 @@ const CardItem = ({ product }) => {
         >
           <CardHeader className="absolute z-10 top-1 flex-col items-start">
             <div className="text-tiny text-black uppercase font-bold">
-              <Rating value={product.rating.rate} fractions={2} readOnly />
+              <Rating value={item.rating.rate} fractions={2} readOnly />
             </div>
             <h4 className="text-black font-medium text-2xl">
-              {product.title.substring(0, 15)}...
+              {item.title.substring(0, 15)}...
             </h4>
           </CardHeader>
           <Image
             removeWrapper
             alt="Card background"
             className="z-0 hover:scale-125 w-[150px] object-contain"
-            src={product.image}
+            src={item.image}
           />
           <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-center gap-10">
             <Button
-              onClick={() => dispatch(AddCart(product))}
+              onClick={() => dispatch(AddCart(item))}
               className="text-tiny"
               color="primary"
               radius="full"
@@ -43,7 +43,7 @@ const CardItem = ({ product }) => {
             >
               Add To Cart
             </Button>
-            <Link to={`/details/${product.id}`}>
+            <Link to={`/details/${item.id}`}>
               <Button
                 className="text-tiny"
                 color="primary"
@@ -55,9 +55,9 @@ const CardItem = ({ product }) => {
             </Link>
           </CardFooter>
         </Card>
-      </div>
+      </div> 
     </>
-  );
-};
+  )
+}
 
-export default CardItem;
+export default SearchCard
